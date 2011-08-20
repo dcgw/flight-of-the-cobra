@@ -1,6 +1,4 @@
 package net.noiseinstitute.flight_of_the_cobra {
-    import flash.net.sendToURL;
-
     import net.flashpunk.Entity;
     import net.flashpunk.graphics.Image;
     import net.flashpunk.utils.Input;
@@ -15,9 +13,11 @@ package net.noiseinstitute.flight_of_the_cobra {
         private static const SHOT_VARIANCE:Number = 0.2;
 
         private var _fireRemaining:int = 0;
+        private var _shots:Vector.<Shot>;
 
-        public function Cobra () {
+        public function Cobra (shots:Vector.<Shot>) {
             super(Main.WIDTH/2, 6, new Image(CobraSprite));
+            _shots = shots;
         }
 
         public override function update():void {
