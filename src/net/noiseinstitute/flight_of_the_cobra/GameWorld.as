@@ -7,6 +7,8 @@ package net.noiseinstitute.flight_of_the_cobra {
             var background:Entity = new Entity();
             background.graphic = new BackgroundGraphic();
             add(background);
+
+            add(new Cobra());
         }
     }
 }
