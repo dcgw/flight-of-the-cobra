@@ -6,12 +6,14 @@ package net.noiseinstitute.flight_of_the_cobra {
 
     public class BackgroundGraphic extends Graphic {
         private static const NUM_STARS:int = 64;
-        private static const SPEED:Number = 1;
+        private static const SPEED:Number = 4;
 
         private var _frame:int=0;
         private var _randomness:Vector.<Number> = new Vector.<Number>();
 
         public function BackgroundGraphic() {
+            active = true;
+
             for (var i:int=0; i<NUM_STARS*3; ++i) {
                 _randomness[i] = Math.random();
             }

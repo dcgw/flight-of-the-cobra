@@ -6,8 +6,8 @@ package net.noiseinstitute.flight_of_the_cobra {
 
     [SWF(width="320", height="480", backgroundColor="#000000", frameRate="60")]
     public class Main extends Engine {
-        public static const WIDTH:int = 320;
-        public static const HEIGHT:int = 480;
+        public static const WIDTH:int = 160;
+        public static const HEIGHT:int = 240;
         public static const FPS:int = 60;
 
         public function Main () {
@@ -18,7 +18,9 @@ package net.noiseinstitute.flight_of_the_cobra {
             Input.define("fire", Key.Z, Key.X, Key.CONTROL);
             Input.define("beam", Key.C, Key.SPACE, Key.SHIFT);
 
-            FP.screen.scale = 1;
+            FP.screen.scale = 2;
+
+            FP.world = new GameWorld();
         }
     }
 }
