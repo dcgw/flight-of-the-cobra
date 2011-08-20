@@ -14,6 +14,7 @@ package net.noiseinstitute.flight_of_the_cobra {
 
         private var _fireRemaining:int = 0;
         private var _shots:Vector.<Shot>;
+        private var _nextShotIndex:int = 0;
 
         public function Cobra (shots:Vector.<Shot>) {
             super(Main.WIDTH/2, 6, new Image(CobraSprite));
@@ -45,7 +46,9 @@ package net.noiseinstitute.flight_of_the_cobra {
         }
 
         private function fire():void {
-
+            var shot:Shot = _shots[_nextShotIndex];
+            shot.fire(x, y);
+            _nextShotIndex = (_nextShotIndex + 1) % _shots.length;
         }
     }
 }

@@ -5,5 +5,8 @@ package net.noiseinstitute.flight_of_the_cobra {
         public function Shot () {
             active = false;
         }
+
+        public function fire (x:Number, y:Number):void {
+        }
     }
 }
