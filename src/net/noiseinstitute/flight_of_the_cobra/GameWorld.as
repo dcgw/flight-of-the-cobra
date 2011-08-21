@@ -24,8 +24,6 @@ package net.noiseinstitute.flight_of_the_cobra {
             add(new Wave2(supplier));
 
             add(new Cobra(_shots));
-
-            //active = true;
         }
 
         public override function update():void {
