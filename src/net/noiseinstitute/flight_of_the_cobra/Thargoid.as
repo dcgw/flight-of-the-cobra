@@ -9,9 +9,13 @@ package net.noiseinstitute.flight_of_the_cobra {
         [Embed(source="Pop.png")]
         private static const DeadSprite:Class;
 
+        private static const DEAD_TIME:int = 12;
+
         private var _normalGraphic:Image = new Image(ThargoidSprite);
         private var _deadGraphic:Image = new Image(DeadSprite);
         private var _behaviour:ThargoidBehaviour;
+        private var _dead:Boolean = false;
+        private var _deadFrames:int;
 
         public function Thargoid () {
             _normalGraphic.x = -_normalGraphic.width*0.5;
@@ -38,6 +42,7 @@ package net.noiseinstitute.flight_of_the_cobra {
             visible = true;
             graphic = _normalGraphic;
             _behaviour = behaviour;
+            _dead = false;
         }
 
         public function kill ():void {
@@ -45,13 +50,22 @@ package net.noiseinstitute.flight_of_the_cobra {
             collidable = false;
             graphic = _deadGraphic;
             _behaviour = null;
+            _dead = true;
+            _deadFrames = 0;
         }
 
         override public function update():void {
-            if (_behaviour != null) {
-                _behaviour.update();
+            if (_dead) {
+                if (_deadFrames++ > DEAD_TIME) {
+                    active = false;
+                    visible = false;
+                }
+            } else {
+                if (_behaviour != null) {
+                    _behaviour.update();
+                }
+                super.update();
             }
-            super.update();
         }
     }
 }
