@@ -1,9 +1,6 @@
 package net.noiseinstitute.flight_of_the_cobra {
     import net.flashpunk.Entity;
-    import net.flashpunk.Graphic;
-    import net.flashpunk.Mask;
     import net.flashpunk.graphics.Image;
-    import net.flashpunk.masks.Hitbox;
 
     public class Thargoid extends Entity {
         [Embed(source="Thargoid.png")]
