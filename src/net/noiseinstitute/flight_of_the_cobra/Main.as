@@ -15,6 +15,8 @@ package net.noiseinstitute.flight_of_the_cobra {
 
             Input.define("left", Key.LEFT);
             Input.define("right", Key.RIGHT);
+            Input.define("up", Key.UP);
+            Input.define("down", Key.DOWN);
             Input.define("fire", Key.Z, Key.X, Key.CONTROL);
             Input.define("beam", Key.C, Key.SPACE, Key.SHIFT);
 

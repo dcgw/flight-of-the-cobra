@@ -28,11 +28,19 @@ package net.noiseinstitute.flight_of_the_cobra {
         public override function update():void {
             var movingLeft:Boolean = Input.check("left");
             var movingRight:Boolean = Input.check("right");
+            var movingUp:Boolean = Input.check("up");
+            var movingDown:Boolean = Input.check("down");
 
             if (movingLeft && !movingRight) {
                 x -= SPEED;
             } else if (movingRight && !movingLeft) {
                 x += SPEED;
+            }
+
+            if (movingUp && !movingDown) {
+                y -= SPEED;
+            } else if (movingDown && !movingUp) {
+                y += SPEED;
             }
 
             if (Input.pressed(("fire"))) {
