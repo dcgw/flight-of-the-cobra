@@ -1,10 +1,5 @@
 package net.noiseinstitute.flight_of_the_cobra {
     import net.flashpunk.Entity;
-    import net.noiseinstitute.flight_of_the_cobra.IMovementBehaviour;
-    import net.noiseinstitute.flight_of_the_cobra.IShootingBehaviour;
-    import net.noiseinstitute.flight_of_the_cobra.Main;
-    import net.noiseinstitute.flight_of_the_cobra.Supplier;
-    import net.noiseinstitute.flight_of_the_cobra.Thargoid;
 
     public class Wave extends Entity {
         private var _supplier:Supplier;
