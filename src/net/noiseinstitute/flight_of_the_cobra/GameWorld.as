@@ -1,6 +1,7 @@
 package net.noiseinstitute.flight_of_the_cobra {
     import net.flashpunk.Entity;
     import net.flashpunk.World;
+    import net.noiseinstitute.flight_of_the_cobra.waves.Wave1;
 
     public class GameWorld extends World {
         private static const NUM_SHOTS:int = 32;
@@ -18,7 +19,7 @@ package net.noiseinstitute.flight_of_the_cobra {
             }
 
             var supplier:Supplier = new Supplier(this);
-            var wave:Wave = new Wave(supplier);
+            var wave:Wave1 = new Wave1(supplier);
             add(wave);
 
             add(new Cobra(_shots));

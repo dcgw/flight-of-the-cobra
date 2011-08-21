@@ -62,7 +62,7 @@ package net.noiseinstitute.flight_of_the_cobra {
                 }
             } else {
                 if (_behaviour != null) {
-                    _behaviour.update();
+                    _behaviour.update(this);
                 }
                 super.update();
             }
