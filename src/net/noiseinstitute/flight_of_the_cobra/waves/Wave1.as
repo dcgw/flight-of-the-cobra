@@ -6,11 +6,12 @@ package net.noiseinstitute.flight_of_the_cobra.waves {
         private static const THARGOID_INTERVAL:int = 16;
 
         private var _supplier:Supplier;
-        private var _thargoidBehaviour:ThargoidBehaviour = new Wave1Behaviour();
+        private var _thargoidBehaviour:ThargoidBehaviour;
         private var _frame:int = 0;
 
         public function Wave1 (supplier:Supplier) {
             _supplier = supplier;
+            _thargoidBehaviour = new Wave1Behaviour(supplier);
 
             super();
         }

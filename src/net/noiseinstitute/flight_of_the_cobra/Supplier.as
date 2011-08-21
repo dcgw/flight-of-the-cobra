@@ -10,9 +10,15 @@ package net.noiseinstitute.flight_of_the_cobra {
         private var _nextThargoidShot:int = 0;
 
         public function Supplier (world:GameWorld) {
-            for (var i:int=0; i<NUM_THARGOIDS; ++i) {
+            var i:int;
+            for (i=0; i<NUM_THARGOIDS; ++i) {
                 _thargoids[i] = new Thargoid();
                 world.add(_thargoids[i]);
+            }
+
+            for (i=0; i<NUM_THARGOID_SHOTS; ++i) {
+                _thargoidShots[i] = new ThargoidShot();
+                world.add(_thargoidShots[i]);
             }
         }
 

@@ -15,7 +15,7 @@ package net.noiseinstitute.flight_of_the_cobra {
         private var _deadGraphic:Image = new Image(DeadSprite);
         private var _behaviour:ThargoidBehaviour;
         private var _dead:Boolean = false;
-        private var _deadFrames:int;
+        private var _frame:int;
 
         public function Thargoid () {
             _normalGraphic.x = -_normalGraphic.width*0.5;
@@ -43,26 +43,33 @@ package net.noiseinstitute.flight_of_the_cobra {
             graphic = _normalGraphic;
             _behaviour = behaviour;
             _dead = false;
+            _frame = 0;
         }
 
         public function kill ():void {
-            type = "dead";
+            type = null;
             collidable = false;
             graphic = _deadGraphic;
             _behaviour = null;
             _dead = true;
-            _deadFrames = 0;
+            _frame = 0;
+        }
+
+        public function dispose():void {
+            type = null;
+            active = false;
+            collidable = false;
+            visible = false;
         }
 
         override public function update():void {
             if (_dead) {
-                if (_deadFrames++ > DEAD_TIME) {
-                    active = false;
-                    visible = false;
+                if (_frame++ > DEAD_TIME) {
+                    dispose();
                 }
             } else {
                 if (_behaviour != null) {
-                    _behaviour.update(this);
+                    _behaviour.update(this, _frame++);
                 }
                 super.update();
             }

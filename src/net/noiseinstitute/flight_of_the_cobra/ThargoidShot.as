@@ -26,7 +26,7 @@ package net.noiseinstitute.flight_of_the_cobra {
         public function shoot(x:Number, y:Number, vx:Number, vy:Number):void {
             active = true;
             collidable = true;
-            visible = false;
+            visible = true;
             type = "enemy-shot";
             this.x = x;
             this.y = y;
