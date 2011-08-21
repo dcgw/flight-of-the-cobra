@@ -16,6 +16,10 @@ package net.noiseinstitute.flight_of_the_cobra {
                 add(shots[i]);
             }
 
+            var supplier:Supplier = new Supplier(this);
+            var wave:Wave = new Wave(supplier);
+            add(wave);
+
             add(new Cobra(shots));
         }
     }
