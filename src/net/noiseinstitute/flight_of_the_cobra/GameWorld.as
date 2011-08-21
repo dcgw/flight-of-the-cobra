@@ -7,19 +7,29 @@ package net.noiseinstitute.flight_of_the_cobra {
         private static const NUM_SHOTS:int = 32;
 
         private var _shots:Vector.<Shot> = new Vector.<Shot>();
+        private var _frame:int = 0;
+
+        private var _waves:Vector.<Entity> = new Vector.<Entity>();
 
         public function GameWorld () {
             var background:Entity = new Entity();
             background.graphic = new BackgroundGraphic();
             add(background);
 
-            for (var i:int=0; i<NUM_SHOTS; ++i) {
+            var i:int;
+            for (i; i<NUM_SHOTS; ++i) {
                 _shots[i] = new Shot();
                 add(_shots[i]);
             }
 
             var supplier:Supplier = new Supplier(this);
-            add(new Wave1(supplier));
+
+            _waves[0] = new Wave1(supplier);
+
+            for (i=0; i<_waves.length; ++i) {
+                _waves[i].active = false;
+                add(_waves[i]);
+            }
 
             add(new Cobra(_shots));
         }
@@ -35,6 +45,14 @@ package net.noiseinstitute.flight_of_the_cobra {
                     }
                 }
             }
+
+            if (_frame == 15) {
+                _waves[0].active = true;
+            } else if (_frame == 135) {
+                _waves[0].active = false;
+            }
+
+            ++_frame;
         }
     }
 }
