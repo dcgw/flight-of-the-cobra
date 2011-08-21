@@ -1,6 +1,6 @@
 package net.noiseinstitute.flight_of_the_cobra {
     public class Supplier {
-        private static const NUM_THARGOIDS:int = 128;
+        private static const NUM_THARGOIDS:int = 64;
         private static const NUM_THARGOID_SHOTS:int = 1024;
 
         private var _thargoids:Vector.<Thargoid> = new Vector.<Thargoid>();

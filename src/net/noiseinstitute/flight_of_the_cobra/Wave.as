@@ -16,9 +16,9 @@ package net.noiseinstitute.flight_of_the_cobra {
         override public function update() :void {
             if (_frame++ % THARGOID_INTERVAL == 0) {
                 var thargoid:Thargoid = _supplier.getThargoid();
+                thargoid.init();
                 thargoid.x = Main.WIDTH/2;
                 thargoid.y = Main.HEIGHT/2;
-                thargoid.active = true;
             }
         }
     }

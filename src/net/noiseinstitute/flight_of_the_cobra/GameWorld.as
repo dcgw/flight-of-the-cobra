@@ -3,24 +3,40 @@ package net.noiseinstitute.flight_of_the_cobra {
     import net.flashpunk.World;
 
     public class GameWorld extends World {
-        private static const NUM_SHOTS:int = 128;
+        private static const NUM_SHOTS:int = 32;
+
+        private var _shots:Vector.<Shot> = new Vector.<Shot>();
 
         public function GameWorld () {
             var background:Entity = new Entity();
             background.graphic = new BackgroundGraphic();
             add(background);
 
-            var shots:Vector.<Shot> = new Vector.<Shot>();
             for (var i:int=0; i<NUM_SHOTS; ++i) {
-                shots[i] = new Shot();
-                add(shots[i]);
+                _shots[i] = new Shot();
+                add(_shots[i]);
             }
 
             var supplier:Supplier = new Supplier(this);
             var wave:Wave = new Wave(supplier);
             add(wave);
 
-            add(new Cobra(shots));
+            add(new Cobra(_shots));
+
+            //active = true;
+        }
+
+        public override function update():void {
+            super.update();
+
+            for each (var shot:Shot in _shots) {
+                if (shot.active) {
+                    var enemy:Entity;
+                    if ((enemy = collideLine("enemy", shot.x, shot.y, shot.endX, shot.endY)) != null) {
+                        Thargoid(enemy).kill();
+                    }
+                }
+            }
         }
     }
 }

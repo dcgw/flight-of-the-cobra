@@ -14,6 +14,15 @@ package net.noiseinstitute.flight_of_the_cobra {
             graphic = new ShotGraphic(_velocity);
         }
 
+        public function get endX():Number {
+            return x + _velocity.x * 3;
+        }
+
+        public function get endY():Number {
+            return y + _velocity.y * 3;
+        }
+
+
         public function fire (x:Number, y:Number, variance:Number):void {
             this.x = x;
             this.y = y;
