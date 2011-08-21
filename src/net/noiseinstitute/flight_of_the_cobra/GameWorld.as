@@ -34,9 +34,13 @@ package net.noiseinstitute.flight_of_the_cobra {
                     new StraightLineMovement(-2, 0.3),
                     new FixedShoot(supplier, -0.1, -1, 30));
             _waves[2] = new Wave(supplier, 14,
-                    -16, 130,
-                    new StraightLineMovement(2, 0.3),
-                    new FixedShoot(supplier, 0.2, -1.1, 25));
+                    -16, 0,
+                    new StraightLineMovement(1, 3),
+                    new FixedShoot(supplier, 1, -1, 15));
+            _waves[3] = new Wave(supplier, 14,
+                    176, 20,
+                    new StraightLineMovement(-1.2, 3),
+                    new FixedShoot(supplier, -1, -1, 15));
 
             for (i=0; i<_waves.length; ++i) {
                 _waves[i].active = false;
@@ -68,8 +72,12 @@ package net.noiseinstitute.flight_of_the_cobra {
                 _waves[2].active = true;
             } else if (_frame == 375) {
                 _waves[1].active = false;
+            } else if (_frame == 395) {
+                _waves[3].active = true
             } else if (_frame == 405) {
                 _waves[2].active = false;
+            } else if (_frame == 455) {
+                _waves[3].active = false;
             }
 
             ++_frame;
