@@ -1,6 +1,8 @@
 package net.noiseinstitute.flight_of_the_cobra {
     import net.flashpunk.Entity;
+    import net.flashpunk.Mask;
     import net.flashpunk.graphics.Image;
+    import net.flashpunk.masks.Hitbox;
     import net.flashpunk.utils.Input;
 
     public class Cobra extends Entity{
@@ -21,7 +23,9 @@ package net.noiseinstitute.flight_of_the_cobra {
             image.x = -image.width/2;
             image.y = -image.height/2;
 
-            super(Main.WIDTH/2, 18, image);
+            var mask:Mask = new Hitbox(3, 3, -1, -1);
+
+            super(Main.WIDTH/2, 18, image, mask);
             _shots = shots;
         }
 
