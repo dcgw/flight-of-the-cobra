@@ -41,6 +41,23 @@ package net.noiseinstitute.flight_of_the_cobra {
                     176, 20,
                     new StraightLineMovement(-1.2, 3),
                     new FixedShoot(supplier, -1, -1, 15));
+            _waves[4] = new Wave(supplier, 18,
+                    -16, 220,
+                    new StraightLineMovement(1.4, 0),
+                    new FixedShoot(supplier, 0.1, -0.5, 40));
+            _waves[5] = new Wave(supplier, 18,
+                    176, 190,
+                    new StraightLineMovement(-1.4, 0),
+                    new FixedShoot(supplier, -0.1, -0.5, 40));
+            _waves[6] = new Wave(supplier, 12,
+                    -16, 160,
+                    new StraightLineMovement(2.4, 0),
+                    new FixedShoot(supplier, 0.1, -1, 30));
+            _waves[7] = new Wave(supplier, 12,
+                    176, 130,
+                    new StraightLineMovement(-2.4, 0),
+                    new FixedShoot(supplier, -0.1, -1, 30));
+
 
             for (i=0; i<_waves.length; ++i) {
                 _waves[i].active = false;
@@ -78,6 +95,24 @@ package net.noiseinstitute.flight_of_the_cobra {
                 _waves[2].active = false;
             } else if (_frame == 455) {
                 _waves[3].active = false;
+            } else if (_frame == 475) {
+                _waves[4].active = true;
+            } else if (_frame == 505) {
+                _waves[5].active = true;
+            } else if (_frame == 625) {
+                _waves[6].active = true;
+            } else if (_frame == 655) {
+                _waves[7].active = true;
+            } else if (_frame == 685) {
+                _waves[7].active = false;
+            } else if (_frame == 715) {
+                _waves[6].active = false;
+            } else if (_frame == 835) {
+                _waves[5].active = false;
+            } else if (_frame == 865) {
+                _waves[4].active = false;
+            } else if (_frame == 894) {
+                _frame = -1;
             }
 
             ++_frame;
