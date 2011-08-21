@@ -26,6 +26,7 @@ package net.noiseinstitute.flight_of_the_cobra {
 
         public override function render(target:BitmapData, point:Point, camera:Point):void {
             target.lock();
+            target.fillRect(target.rect, 0x000000);
             for (var i:int=0; i<NUM_STARS; ++i) {
                 var x:int = _randomness[i*3] * Main.WIDTH;
                 var y:int = _randomness[i*3 + 1] * Main.HEIGHT;
