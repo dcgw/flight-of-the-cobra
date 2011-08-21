@@ -10,14 +10,18 @@ package net.noiseinstitute.flight_of_the_cobra {
         private static const SPEED:Number = 3;
         private static const FIRE_FRAMES:int = 3;
         private static const SHOTS_PER_FRAME:int = 2;
-        private static const SHOT_VARIANCE:Number = 0.2;
+        private static const SHOT_VARIANCE:Number = 0.1;
 
         private var _fireRemaining:int = 0;
         private var _shots:Vector.<Shot>;
         private var _nextShotIndex:int = 0;
 
         public function Cobra (shots:Vector.<Shot>) {
-            super(Main.WIDTH/2, 6, new Image(CobraSprite));
+            var image:Image = new Image(CobraSprite);
+            image.x = -image.width/2;
+            image.y = -image.height/2;
+
+            super(Main.WIDTH/2, 18, image);
             _shots = shots;
         }
 
@@ -31,7 +35,7 @@ package net.noiseinstitute.flight_of_the_cobra {
                 x += SPEED;
             }
 
-            if (Input.check("fire")) {
+            if (Input.pressed(("fire"))) {
                 _fireRemaining = FIRE_FRAMES;
             }
 
@@ -39,7 +43,7 @@ package net.noiseinstitute.flight_of_the_cobra {
                 for (var i:int=0; i<SHOTS_PER_FRAME; ++i) {
                     fire();
                 }
-                _fireRemaining;
+                _fireRemaining--;
             }
 
             super.update();
@@ -47,7 +51,7 @@ package net.noiseinstitute.flight_of_the_cobra {
 
         private function fire():void {
             var shot:Shot = _shots[_nextShotIndex];
-            shot.fire(x, y);
+            shot.fire(x, y, SHOT_VARIANCE);
             _nextShotIndex = (_nextShotIndex + 1) % _shots.length;
         }
     }
