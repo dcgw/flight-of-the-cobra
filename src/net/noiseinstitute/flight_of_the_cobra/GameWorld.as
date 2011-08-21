@@ -1,7 +1,9 @@
 package net.noiseinstitute.flight_of_the_cobra {
     import net.flashpunk.Entity;
     import net.flashpunk.World;
-    import net.noiseinstitute.flight_of_the_cobra.waves.Wave1;
+    import net.noiseinstitute.flight_of_the_cobra.movement.StraightLineMovement;
+    import net.noiseinstitute.flight_of_the_cobra.shooting.FixedShoot;
+    import net.noiseinstitute.flight_of_the_cobra.Wave;
 
     public class GameWorld extends World {
         private static const NUM_SHOTS:int = 32;
@@ -24,7 +26,14 @@ package net.noiseinstitute.flight_of_the_cobra {
 
             var supplier:Supplier = new Supplier(this);
 
-            _waves[0] = new Wave1(supplier);
+            _waves[0] = new Wave(supplier, 16,
+                    -16, 200,
+                    new StraightLineMovement(2, -0.3),
+                    new FixedShoot(supplier, 0.1, -1, 25));
+            _waves[1] = new Wave(supplier, 16,
+                    176, 165,
+                    new StraightLineMovement(-2, 0.3),
+                    new FixedShoot(supplier, -0.1, -1, 25));
 
             for (i=0; i<_waves.length; ++i) {
                 _waves[i].active = false;
@@ -48,8 +57,12 @@ package net.noiseinstitute.flight_of_the_cobra {
 
             if (_frame == 15) {
                 _waves[0].active = true;
-            } else if (_frame == 135) {
+            } else if (_frame == 75) {
+                _waves[1].active = true;
+            } else if (_frame == 255) {
                 _waves[0].active = false;
+            } else if (_frame == 315) {
+                _waves[1].active = false;
             }
 
             ++_frame;
